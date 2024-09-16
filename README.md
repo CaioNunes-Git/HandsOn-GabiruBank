@@ -3,7 +3,7 @@
 <hr size = "185%">
 
 # Pré-Requisitos 
-  - Java 17
+  - JDK 17
   - Apache Maven 
     
 ## Sumário
