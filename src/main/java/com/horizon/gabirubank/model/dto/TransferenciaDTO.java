@@ -14,7 +14,7 @@ public record TransferenciaDTO(
         @NotBlank Conta contaOrigem,
         @NotBlank Conta contaDestino,
         @NotBlank BigDecimal valor,
-        @NotBlank @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime data) {
     public TransferenciaDTO(Transferencia transferencia){
         this(transferencia.getId(), transferencia.getContaOrigem(), transferencia.getContaDestino(),transferencia.getValor(),transferencia.getData());

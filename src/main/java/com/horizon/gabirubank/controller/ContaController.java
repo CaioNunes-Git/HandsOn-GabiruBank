@@ -1,7 +1,9 @@
 package com.horizon.gabirubank.controller;
 
 import com.horizon.gabirubank.model.dto.DadosContaDTO;
+import com.horizon.gabirubank.model.dto.ValorDTO;
 import com.horizon.gabirubank.service.ContaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +24,7 @@ public class ContaController {
     public ContaService contaService;
 
     @GetMapping
-    public ResponseEntity<Page<DadosContaDTO>> listarTodos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+    public ResponseEntity<Page<DadosContaDTO>> listarTodos(@PageableDefault(size = 10) Pageable paginacao){
         return ResponseEntity.ok(contaService.listarTodos(paginacao));
     }
 
@@ -33,7 +35,7 @@ public class ContaController {
 
      @PostMapping
      @Transactional
-     public ResponseEntity<DadosContaDTO> cadastrar (@RequestBody DadosContaDTO dadosContaDTO){
+     public ResponseEntity<DadosContaDTO> cadastrar (@RequestBody @Valid DadosContaDTO dadosContaDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(contaService.cadastrar(dadosContaDTO));
      }
 
@@ -44,13 +46,13 @@ public class ContaController {
 
      @PostMapping("/depositar/{id}")
      @Transactional
-     public ResponseEntity<DadosContaDTO> depositar (@PathVariable Long id, @RequestBody BigDecimal valor) {
-        return ResponseEntity.ok(contaService.depositar(id, valor));
+     public ResponseEntity<DadosContaDTO> depositar (@PathVariable Long id, @RequestBody ValorDTO valor) {
+        return ResponseEntity.ok(contaService.depositar(id, valor.valor()));
      }
 
     @PostMapping("/sacar/{id}")
     @Transactional
-    public ResponseEntity<DadosContaDTO> sacar (@PathVariable Long id, @RequestBody BigDecimal valor) {
-        return ResponseEntity.ok(contaService.sacar(id,valor));
+    public ResponseEntity<DadosContaDTO> sacar (@PathVariable Long id, @RequestBody ValorDTO valor) {
+        return ResponseEntity.ok(contaService.sacar(id,valor.valor()));
     }
 }

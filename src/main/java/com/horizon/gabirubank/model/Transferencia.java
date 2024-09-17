@@ -23,8 +23,7 @@ public class Transferencia {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime data = LocalDateTime.now();
 
-    public Transferencia(Long id, Conta contaOrigem, Conta contaDestino, BigDecimal valor) {
-        this.id = id;
+    public Transferencia(Conta contaOrigem, Conta contaDestino, BigDecimal valor) {
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
         this.valor = valor;

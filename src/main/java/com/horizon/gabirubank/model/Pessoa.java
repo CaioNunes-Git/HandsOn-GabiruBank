@@ -14,6 +14,9 @@ public class Pessoa {
     @Column(unique = true)
     private String cpf;
 
+    public Pessoa() {
+    }
+
     public Pessoa(DadosPessoaDTO dadosPessoa) {
         this.id = dadosPessoa.id();
         this.nome = dadosPessoa.nome();

@@ -1,13 +1,11 @@
 package com.horizon.gabirubank.service;
 
 import com.horizon.gabirubank.model.Conta;
-import com.horizon.gabirubank.model.Pessoa;
 import com.horizon.gabirubank.model.dto.DadosContaDTO;
 import com.horizon.gabirubank.repository.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -45,7 +43,7 @@ public class ContaService {
 //    }
 
     public DadosContaDTO cadastrar(DadosContaDTO dadosContaDTO) {
-        var buscarConta = contaRepository.buscarContaPorIdETipo(new Pessoa(dadosContaDTO.pessoa()),
+        var buscarConta = contaRepository.buscarContaPorPessoaIdETipo(dadosContaDTO.pessoa().id(),
                         String.valueOf(dadosContaDTO.tipoConta()));
         Conta conta = new Conta(dadosContaDTO);
         if (buscarConta.isEmpty() && dadosContaDTO.saldo().compareTo(BigDecimal.ZERO) >= 0)
