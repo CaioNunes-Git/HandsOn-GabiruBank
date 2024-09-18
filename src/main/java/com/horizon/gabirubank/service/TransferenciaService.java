@@ -29,5 +29,4 @@ public class TransferenciaService {
 
         return new TransferenciaDTO(transferenciaRepository.save(transferenciaMontada));
     }
-
 }
