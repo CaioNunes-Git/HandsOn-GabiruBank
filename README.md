@@ -1,10 +1,11 @@
 <h1 align="center">GabiruBank</h1>
-<h3 align="center">API voltada para resolução de teste técnico da Horizon</h3>
+<h3 align="center">API voltada para resolução do teste técnico da Horizon</h3>
 <hr size = "185%">
 
 # Pré-Requisitos 
   - JDK 17
-  - MySQL 
+  - MySQL
+  - IDE da sua escolha 
     
 ## Sumário
 
